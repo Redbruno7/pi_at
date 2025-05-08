@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
+    
     /* Header principal */
     header {
       height: 100vh;
@@ -31,6 +32,7 @@
       z-index: -1;
       transform: scale(1);
       transition: transform 0.2s ease-out;
+      opacity: 1;
     }
 
     /* Conteúdo do header */
@@ -39,26 +41,179 @@
       z-index: 1;
     }
 
-    footer {
-      background-color: #f8f9fa;
-      padding: 20px 0;
-      text-align: center;
+    header h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: 4rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    }
+
+    header p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.25rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     }
 
     body {
       font-family: 'Montserrat', sans-serif;
     }
 
-    header h1 {
-      font-family: 'Anton', sans-serif;
-      font-size: 4rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+    .texto-sobre {
+      font-size: 0.8rem;
+      text-align: justify;
+      line-height: 1.6;
     }
 
-    header p {
-      font-family: 'Montserrat', sans-serif;
+    .fade-zoom-img {
+      opacity: 0.2;
+      transform: scale(0.8);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .fade-zoom-img.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    section h2 {
+      text-align: center;       /* Centraliza o título */
+      font-size: 2rem;          /* Ajuste do tamanho da fonte do título */
+      margin-bottom: 20px;      /* Espaçamento abaixo do título */
+      font-weight: 700;         /* Deixa o título mais forte */
+    }
+
+    .bloco-datas {
+      background-color: #343a40; /* Cor do navbar (azul escuro) */
+      border-radius: 10px;       /* Bordas arredondadas */
+      padding: 20px;             /* Espaçamento interno */
+      text-align: center;        /* Texto centralizado */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+      color: white;              /* Texto branco para contraste */
+      transition: transform 0.3s ease-in-out; /* Transição suave para o efeito de aumento */
+      margin: 0 auto;            /* Centraliza o bloco */
+      width: 80%;                /* Definir largura para o bloco */
+      max-width: 800px;          /* Definir largura máxima para o bloco */
+    }
+
+    .bloco-datas:hover {
+      transform: scale(1.05); /* Aumenta o tamanho do bloco */
+    }
+
+    /* Estilo da lista sem pontos e centralizada */
+    .bloco-datas ul {
+      list-style: none;         /* Remove os pontos */
+      padding: 0;               /* Remove o espaçamento interno */
+      margin: 0;                /* Remove a margem */
+      display: inline-block;    /* Centraliza a lista */
+    }
+
+    .bloco-datas ul li {
+      font-size: 1.1rem;        /* Tamanho de fonte mais legível */
+      margin: 10px 0;           /* Espaçamento entre os itens */
+      text-align: center;       /* Garante que o texto dentro de cada item da lista esteja centralizado */
+    }
+    
+    /* Estilo para a seção de palestrantes */
+    .palestrantes {
+      background-image: url('img/hightech_background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 20px;
+      overflow: hidden;
+      color: white;
+      padding: 60px 0;
+    }
+
+    .palestrantes h2 {
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Alinhamento dos cartões de palestrantes */
+    .row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+      background-color: #fff;
+    }
+
+    .card:hover {
+      transform: translateY(-10px); /* Efeito de elevação ao passar o mouse */
+    }
+
+    /* Estilo para as imagens dos palestrantes */
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    /* Estilo para o texto e o conteúdo dos cartões */
+    .card-body {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .card-title {
       font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .card-text {
+      font-size: 0.8rem;
+      color: #555;
+    }
+
+    /* Responsividade: Ajustando o tamanho dos cartões em telas menores */
+    @media (max-width: 768px) {
+      .col-md-2 {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+    }
+
+    footer {
+      background-image: url('img/hightech_background.jpg'); /* Mesma imagem de fundo */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      position: relative;
+      border-top: 5px solid #fff;
+    }
+
+    footer::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* camada escura sobre a imagem */
+      z-index: 1;
+    }
+
+    footer p {
+      position: relative;
+      z-index: 2;
+      font-size: 1.2rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin: 0;
+      padding: 10px 20px;
+      background-color: rgba(0, 0, 0, 0.6); /* fundo semi-transparente para o texto */
+      border-radius: 10px;
     }
   </style>
 </head>
@@ -104,57 +259,105 @@
         
         <!-- Coluna esquerda: texto -->
         <div class="col-md-6">
-          <h2>Sobre o Evento</h2>
-          <p>
-            O Congresso Científico 2025 reúne pesquisadores, profissionais e estudantes para discutir os avanços mais
-            recentes nas áreas de tecnologia e inovação e seu impacto na sociedade.
-          </p>
-          <p>
-            Durante dois dias de imersão, os participantes poderão assistir a palestras, apresentar trabalhos e criar conexões
-            com especialistas renomados do setor.
+          <h2>Sobre o Evento</h2><br>
+          <p class="texto-sobre">O Congresso Científico da Sociedade Brasileira de Tecnologia (CCSBT) 
+            é um evento multidisciplinar que tem por objetivo reunir profissionais, 
+            estudantes, pesquisadores e empreendedores de todo o país para compartilhar conhecimentos, 
+            fomentar a inovação e debater os rumos da tecnologia na sociedade moderna.<br><br>
+            O CCSBT se consolida como um espaço de encontro entre teoria e prática, academia e mercado, ciência e impacto social.<br><br>
+            Em 2025, sua primeira edição acontecerá em Juiz de Fora, Minas Gerais, com o tema 
+            “Inovações Tecnológicas para se Inovar na Sociedade Contemporânea”.<br><br>
+            O congresso propõe uma reflexão crítica sobre o papel da tecnologia na transformação social, 
+            incentivando o diálogo sobre inclusão digital, inteligência artificial, sustentabilidade e empreendedorismo tecnológico.<br><br>
+            Venha fazer parte dessa jornada de descobertas, conexões e ideias transformadoras. Juiz de Fora e o CCSBT 2025 esperam por você!
           </p>
         </div>
 
         <!-- Coluna direita: imagem ilustrativa -->
         <div class="col-md-6 text-center">
-          <img src="img/" alt="Imagem do evento" class="img-fluid rounded shadow">
+          <img src="img/palestra_0.jpg" alt="Foto genérica de palestra" class="img-fluid rounded shadow fade-zoom-img">
         </div>
       </div>
     </section>
 
-    <!-- Seção: Datas importantes -->
+    <!-- Seção: Data do Evento -->
     <section class="mt-5">
-      <h2>Datas Importantes</h2>
-      <ul>
-        <li>Início das inscrições: 01/06/2025</li>
-        <li>Encerramento das inscrições: 10/06/2025</li>
-        <li>Realização do evento: 29 a 30 de Junho de 2025</li>
-      </ul>
+      <h2>Data do Evento:</h2>
+      <div class="bloco-datas">
+        <ul>
+          <li>Início das inscrições: 01/06/2025</li>
+          <li>Encerramento das inscrições: 10/06/2025</li>
+          <li>Realização do evento: 29 a 30 de Junho de 2025</li>
+        </ul>
+      </div>
     </section>
 
-    <!-- Seção: Palestrantes confirmados -->
-    <section class="mt-5">
-      <h2>Palestrantes Confirmados</h2>
-      <div class="row">
-        <div class="col-md-4">
+    <!-- Seção: Palestrantes -->
+    <section class="mt-5 palestrantes">
+      <h2 class="text-center">Palestrantes Confirmados</h2>
+      <div class="row justify-content-center">
+
+        <!-- Palestrante 1 -->
+        <div class="col-md-2 mb-4">
           <div class="card">
-            <img src="img/palestrante1.jpg" class="card-img-top" alt="Palestrante 1">
+            <img src="img/palestrante_1.jpeg" class="card-img-top" alt="Palestrante 1">
             <div class="card-body">
-              <h5 class="card-title">Dr. João Silva</h5>
-              <p class="card-text">Especialista em Inteligência Artificial (USP).</p>
+              <h5 class="card-title">Dr. Eduardo Silva</h5>
+              <p class="card-text">Especialista em Inteligência Artificial.</p>
             </div>
           </div>
         </div>
 
-        <!-- Outros palestrantes podem ser adicionados aqui -->
+        <!-- Palestrante 2 -->
+        <div class="col-md-2 mb-4">
+          <div class="card">
+            <img src="img/palestrante_2.jpeg" class="card-img-top" alt="Palestrante 2">
+            <div class="card-body">
+              <h5 class="card-title">Profa. Maria Souza</h5>
+              <p class="card-text">Pesquisadora em Computação Quântica.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Palestrante 3 -->
+        <div class="col-md-2 mb-4">
+          <div class="card">
+            <img src="img/palestrante_3.jpeg" class="card-img-top" alt="Palestrante 3">
+            <div class="card-body">
+              <h5 class="card-title">Dr. Carlos Almeida</h5>
+              <p class="card-text">Especialista em Cibersegurança.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Palestrante 4 -->
+        <div class="col-md-2 mb-4">
+          <div class="card">
+            <img src="img/palestrante_4.jpeg" class="card-img-top" alt="Palestrante 4">
+            <div class="card-body">
+              <h5 class="card-title">Profa. Ana Costa</h5>
+              <p class="card-text">Pesquisadora em Realidade Aumentada.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Palestrante 5 -->
+        <div class="col-md-2 mb-4">
+          <div class="card">
+            <img src="img/palestrante_5.jpeg" class="card-img-top" alt="Palestrante 5">
+            <div class="card-body">
+              <h5 class="card-title">Dr. Roberto Mendes</h5>
+              <p class="card-text">Especialista em Blockchain.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
-
   </main>
 
   <!-- Rodapé -->
   <footer>
-    <p>&copy; 2025 Congresso Científico. Todos os direitos reservados.</p>
+    <p>&copy; 2025 CCBST. Todos os direitos reservados.</p>
   </footer>
 
   <!-- Bootstrap e script para zoom -->
@@ -168,8 +371,34 @@
       const scale = 1 + Math.min(scrollTop / 400, 1.5); // máximo 2.5x
       bg.style.transform = `scale(${scale})`;
     });
+
+    // Faz o efeito de zoom + transparência ao rolar a página
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const bg = document.querySelector('.header-bg');
+
+      // Zoom
+      const scale = 1 + Math.min(scrollTop / 400, 1.5);
+      bg.style.transform = `scale(${scale})`;
+
+      // Transparência (opacidade vai de 1 até ~0.5)
+      const maxScroll = 400; // ajuste se quiser
+      const opacity = Math.max(1 - scrollTop / maxScroll, 0.5); // mínimo 0.5 de opacidade
+      bg.style.opacity = opacity;
+    });
+
+    const targetImg = document.querySelector('.fade-zoom-img');
+
+    window.addEventListener('scroll', () => {
+      const imgTop = targetImg.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+
+      if (imgTop < windowHeight * 0.8) {
+        targetImg.classList.add('visible');   // Aparece
+      } else {
+        targetImg.classList.remove('visible'); // Some quando sobe
+      }
+    });
   </script>
-
 </body>
-
 </html>

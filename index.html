@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CCSBT 2025 | Juiz de Fora - MG</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Header principal */
+    header {
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      color: white;
+    }
+
+    /* Imagem de fundo do header */
+    .header-bg {
+      background-image: url('img/ufjf_aerea.jpg');
+      background-size: cover;
+      background-position: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      transform: scale(1);
+      transition: transform 0.2s ease-out;
+    }
+
+    /* Conteúdo do header */
+    header .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    footer {
+      background-color: #f8f9fa;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    header h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: 4rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    header p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.25rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Navbar FIXA no topo -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">CCSBT
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">INÍCIO</a></li>
+        <li class="nav-item"><a class="nav-link" href="programacao.html">PROGRAMAÇÃO</a></li>
+        <li class="nav-item"><a class="nav-link" href="local.html">LOCALIZAÇÃO</a></li>
+        <li class="nav-item"><a class="nav-link" href="inscricao.html">INSCRIÇÃO</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Header com imagem de fundo -->
+<header id="mainHeader" class="text-white text-center d-flex align-items-center justify-content-center" style="margin-top: 56px;">
+  <div class="header-bg"></div>
+  <div class="container">
+    <h1 class="display-4 fw-bold">1º Congresso Científico da Sociedade Brasileira de Tecnologia</h1>
+    <p class="lead">Inovações Tecnológicas para se inovar na sociedade contemporânea<br>
+      29 e 30 de Junho | Juiz de Fora - MG</p>
+    <a href="inscricao.html" class="btn btn-primary btn-lg mt-4">Inscreva-se</a>
+  </div>
+</header>
+
+  <!-- Conteúdo principal -->
+  <main class="container my-5">
+
+    <!-- Seção: Sobre o evento com layout em duas colunas -->
+    <section class="mt-5">
+      <div class="row align-items-center">
+        
+        <!-- Coluna esquerda: texto -->
+        <div class="col-md-6">
+          <h2>Sobre o Evento</h2>
+          <p>
+            O Congresso Científico 2025 reúne pesquisadores, profissionais e estudantes para discutir os avanços mais
+            recentes nas áreas de tecnologia e inovação e seu impacto na sociedade.
+          </p>
+          <p>
+            Durante dois dias de imersão, os participantes poderão assistir a palestras, apresentar trabalhos e criar conexões
+            com especialistas renomados do setor.
+          </p>
+        </div>
+
+        <!-- Coluna direita: imagem ilustrativa -->
+        <div class="col-md-6 text-center">
+          <img src="img/" alt="Imagem do evento" class="img-fluid rounded shadow">
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção: Datas importantes -->
+    <section class="mt-5">
+      <h2>Datas Importantes</h2>
+      <ul>
+        <li>Início das inscrições: 01/06/2025</li>
+        <li>Encerramento das inscrições: 10/06/2025</li>
+        <li>Realização do evento: 29 a 30 de Junho de 2025</li>
+      </ul>
+    </section>
+
+    <!-- Seção: Palestrantes confirmados -->
+    <section class="mt-5">
+      <h2>Palestrantes Confirmados</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <img src="img/palestrante1.jpg" class="card-img-top" alt="Palestrante 1">
+            <div class="card-body">
+              <h5 class="card-title">Dr. João Silva</h5>
+              <p class="card-text">Especialista em Inteligência Artificial (USP).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Outros palestrantes podem ser adicionados aqui -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2025 Congresso Científico. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Bootstrap e script para zoom -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+
+    // Faz o efeito de zoom ao rolar a página
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const bg = document.querySelector('.header-bg');
+      const scale = 1 + Math.min(scrollTop / 400, 1.5); // máximo 2.5x
+      bg.style.transform = `scale(${scale})`;
+    });
+  </script>
+
+</body>
+
+</html>

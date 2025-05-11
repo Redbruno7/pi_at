@@ -41,6 +41,19 @@
             } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 echo "O email fornecido não é válido!";
             } else {
+                // Verificar se o CPF já está cadastrado
+                $check = $conn->prepare("SELECT cpf FROM participantes WHERE cpf = ?");
+                $check->bind_param("s", $cpf);
+                $check->execute();
+                $check->store_result();
+
+                if ($check->num_rows > 0) {
+                    echo "⚠️ Este CPF já foi utilizado para uma inscrição!";
+                    $check->close();
+                    exit;
+                }
+                $check->close();
+
                 // Preparar a query para inserção dos dados no banco
                 $stmt = $conn->prepare("INSERT INTO participantes (cpf, nome, email, senha, telefone, endereco, cidade, estado, pais, titulacao, instituicao) 
                                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
@@ -48,11 +61,11 @@
 
                 // Executar a query
                 if ($stmt->execute()) {
-                    echo "Inscrição realizada com sucesso!";
+                    echo "✅ Inscrição realizada com sucesso!";
                 } else {
                     echo "Erro ao registrar inscrição: " . $stmt->error;
                 }
-
+                
                 // Fechar a declaração preparada
                 $stmt->close();
             }

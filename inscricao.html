@@ -178,9 +178,9 @@
             <label for="titulacao" class="form-label">Titulação</label>
             <select class="form-select" id="titulacao" name="titulacao" required>
                 <option value="">Selecione...</option>
-                <option value="ouvinte">Graduação</option>
-                <option value="apresentador">Mestre</option>
-                <option value="palestrante">Doutor</option>
+                <option value="graduacao">Graduação</option>
+                <option value="mestre">Mestre</option>
+                <option value="doutor">Doutor</option>
             </select>
             </div>
 
@@ -224,6 +224,9 @@
 
       const form = e.target;
       const formData = new FormData(form); // pega os dados do form
+      
+      // Mostra o valor de titulacao no console
+      console.log("Titulação:", formData.get("titulacao"));
 
       fetch("processo_inscricao.php", {
         method: "POST",
